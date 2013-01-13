@@ -8,6 +8,7 @@ import android.widget.*;
 import net.zetetic.tests.ResultNotifier;
 import net.zetetic.tests.TestResult;
 import net.zetetic.tests.TestSuiteRunner;
+import net.zetetic.tests.spatialite.SpatialiteTestSuiteRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class TestSuiteActivity extends Activity implements ResultNotifier {
         findViewById(R.id.executeSuite).setEnabled(false);
         resultsView = (ListView) findViewById(R.id.test_suite_results);
         ZeteticApplication.getInstance().setCurrentActivity(this);
-        new TestSuiteRunner().execute(this);
+        new SpatialiteTestSuiteRunner().execute(this);
     }
 
     @Override
