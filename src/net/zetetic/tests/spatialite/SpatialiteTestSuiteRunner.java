@@ -19,6 +19,7 @@ public class SpatialiteTestSuiteRunner extends net.zetetic.tests.TestSuiteRunner
 		// tests.clear();
 		tests.add(new DatabaseVersionTest());
 		tests.add(new RTreeTest());
+		tests.add(new GeoFunctionTest());
 		
 		return tests;
 	}

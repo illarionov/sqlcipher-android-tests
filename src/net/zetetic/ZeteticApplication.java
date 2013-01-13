@@ -16,6 +16,7 @@ public class ZeteticApplication extends Application {
     public static final String ONE_X_DATABASE = "1x.db";
     public static final String ONE_X_USER_VERSION_DATABASE = "1x-user-version.db";
     public static final String UNENCRYPTED_DATABASE = "unencrypted.db";
+    public static final String SPATIALITE_DATABASE = "spatialite.db";
 
     public ZeteticApplication(){
         instance = this;
