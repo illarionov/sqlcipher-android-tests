@@ -43,6 +43,7 @@ public class TestSuiteRunner extends AsyncTask<ResultNotifier, TestResult, Void>
         tests.add(new GetTypeFromCrossProcessCursorWrapperTest());
         tests.add(new InvalidPasswordTest());
         tests.add(new NullQueryResultTest());
+        tests.add(new EmptyStringTest());
         tests.add(new CrossProcessCursorQueryTest());
         tests.add(new LoopingQueryTest());
         tests.add(new LoopingCountQueryTest());
