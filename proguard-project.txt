@@ -1,0 +1,25 @@
+-libraryjars assets/icudt46l.zip
+-libraryjars libs/jsr305.jar
+
+#-printmapping proguard/mapping.txt
+
+-dontwarn sun.misc.Unsafe
+-dontwarn com.google.common.collect.MinMaxPriorityQueue
+
+#SQLCipher optimized
+-keepclasseswithmembers class net.sqlcipher.** {
+    native <methods>;
+}
+-keep class net.sqlcipher.database.SQLite* {
+    int nHandle;
+    int nStatement;
+}
+-keep class net.sqlcipher.CursorWindow {
+    int nWindow;
+}
+-keep class net.sqlcipher.database.SQLiteDatabase {
+    int mNativeHandle;
+}
+#-keepnames class net.sqlcipher.** {
+# *;
+#}
