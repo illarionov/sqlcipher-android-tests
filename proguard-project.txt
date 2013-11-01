@@ -1,4 +1,4 @@
--libraryjars assets/icudt46l.zip
+-libraryjars assets/icudt51l.zip
 -libraryjars libs/jsr305.jar
 
 #-printmapping proguard/mapping.txt
