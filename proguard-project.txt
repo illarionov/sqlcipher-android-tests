@@ -7,6 +7,9 @@
 -dontwarn com.google.common.collect.MinMaxPriorityQueue
 
 #SQLCipher optimized
+-keep class net.sqlcipher.database.* extends java.lang.Exception {
+   *;
+}
 -keepclasseswithmembers class net.sqlcipher.** {
     native <methods>;
 }
