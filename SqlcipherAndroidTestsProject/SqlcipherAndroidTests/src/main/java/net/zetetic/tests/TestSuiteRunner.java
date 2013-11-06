@@ -54,7 +54,6 @@ public class TestSuiteRunner extends AsyncTask<ResultNotifier, TestResult, Void>
         tests.add(new RawExecSQLExceptionTest());
         tests.add(new CompiledSQLUpdateTest());
         tests.add(new AES128CipherTest());
-        tests.add(new MigrationFromDatabaseFormat1To2());
         tests.add(new StatusMemoryUsedTest());
         tests.add(new PragmaCipherVersionTest());
         tests.add(new ImportUnencryptedDatabaseTest());
@@ -64,7 +63,6 @@ public class TestSuiteRunner extends AsyncTask<ResultNotifier, TestResult, Void>
         tests.add(new ReadableWritableAccessTest());
         tests.add(new CursorAccessTest());
         tests.add(new VerifyOnUpgradeIsCalledTest());
-        tests.add(new MigrationUserVersion());
         tests.add(new ExportToUnencryptedDatabase());
         tests.add(new QueryNonEncryptedDatabaseTest());
         return tests;
