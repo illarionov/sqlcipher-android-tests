@@ -22,13 +22,13 @@
         </activity>
 
         <provider
-            android:name="net.zetetic.ZeteticContentProvider"
+            android:name=".ZeteticContentProvider"
             android:authorities="net.zetetic.sqlcipher.zeteticprovider" />
 
-        <activity
-            android:name="net.zetetic.MainActivity"
-            android:label="@string/title_activity_main" >
-        </activity>
+        <provider android:name=".ZeteticContentProvider2"
+            android:authorities="net.zetetic.sqlcipher.zeteticprovider2"
+            android:process=":provider"
+            />
     </application>
 
 </manifest>

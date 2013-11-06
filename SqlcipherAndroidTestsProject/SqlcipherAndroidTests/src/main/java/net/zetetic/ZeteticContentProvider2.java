@@ -1,22 +1,24 @@
 package net.zetetic;
 
+import java.io.File;
+
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteQueryBuilder;
 
-import java.io.File;
+public class ZeteticContentProvider2 extends ContentProvider {
 
-public class ZeteticContentProvider extends ContentProvider {
-
+    public static String DATABASE_NAME = "interprocess_test.db";
     public static final Uri CONTENT_URI =
-            Uri.parse("content://net.zetetic.sqlcipher.zeteticprovider");
+            Uri.parse("content://net.zetetic.sqlcipher.zeteticprovider2");
 
     private SQLiteDatabase database;
 
-    public ZeteticContentProvider() {
+    public ZeteticContentProvider2() {
 
     }
 
@@ -29,13 +31,14 @@ public class ZeteticContentProvider extends ContentProvider {
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
         SQLiteDatabase.loadLibs(ZeteticApplication.getInstance());
-        File databasePath = ZeteticApplication.getInstance().getDatabasePath(ZeteticApplication.DATABASE_NAME);
+        File databasePath = ZeteticApplication.getInstance().getDatabasePath(DATABASE_NAME);
         database = ZeteticApplication.getInstance().createDatabase(databasePath);
 
         createDatabaseWithData(database);
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
         builder.setTables("t1");
-        return  builder.query(database, new String[]{"a", "b"}, null, null, null, null, null);
+        final Cursor c = builder.query(database, new String[]{"a", "b"}, null, null, null, null, null);
+        return c;
     }
 
     @Override
@@ -59,7 +62,10 @@ public class ZeteticContentProvider extends ContentProvider {
     }
 
     private void createDatabaseWithData(SQLiteDatabase database) {
-        database.execSQL("create table if not exists t1(a, b);");
-        database.execSQL("insert into t1(a, b) values('one for the money', 'two for the show');");
+        database.execSQL("create table if not exists t1(a varchar, b blob);");
+        ContentValues values = new ContentValues();
+        values.put("a", "one for the money");
+        values.put("b", "two for the show".getBytes());
+        database.insert("t1", null, values);
     }
 }
